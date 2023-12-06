@@ -56,4 +56,13 @@
         android:textAlignment="center"
         android:textSize="18sp" />
 
+    <Button
+        android:id="@+id/share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idTVSMSDate"
+        android:layout_centerHorizontal="true"
+        android:text="Share"
+        />
+
 </RelativeLayout>

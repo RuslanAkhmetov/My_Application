@@ -5,9 +5,10 @@ import android.database.Cursor
 import android.provider.Telephony
 import android.util.Log
 
-const val TAG ="SMSDataMapper"
+
 
 class SMSData(private val applicationContext: Context) {
+    private val TAG ="SMSDataMapper"
 
     public fun readAllSMS(): List<SMS?>? {
         val cr =   applicationContext.contentResolver

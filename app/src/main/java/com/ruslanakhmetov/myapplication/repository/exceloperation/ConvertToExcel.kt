@@ -11,12 +11,14 @@ import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
 
+
 class ConvertToExcel(private val context: Context) {
+
 
     companion object {
         const val TAG = "ConvertToExcel"
-        const val APP_DIRECTORY_NAME = "Report"
-        const val FILE_NAME = "EntryReport"
+        const val APP_DIRECTORY_NAME = "reports"
+        const val FILE_NAME = "EntryReport.xls"       //Output file .xls
         const val SHEET_NAME = "Report"   // Excel sheet name
         val HEADER_LIST = listOf(
             "id",
@@ -39,9 +41,11 @@ class ConvertToExcel(private val context: Context) {
                                   headerColNames: List<String> = HEADER_LIST,
     ) {
         //Get App Director, APP_DIRECTORY_NAME is a string
-        val appDirectory = context.filesDir  // context.getExternalFilesDir(dirName)
+        val appDirectory = File(context?.filesDir, dirName)  // context.getExternalFilesDir(dirName)
+        Log.i(TAG, "convertBudgetEntryToExcel: directoryexist ${appDirectory.exists()}")
         if (appDirectory != null && !appDirectory.exists()){
-            appDirectory.mkdir()
+            if(appDirectory.mkdir())
+                Log.i(TAG, "convertBudgetEntryToExcel: directory ${appDirectory.toString()} made")
         }
 
         //Create excel file with extension .xlsx
@@ -91,9 +95,10 @@ class ConvertToExcel(private val context: Context) {
             createCell(row, 1, entry.smsId.toString())
             createCell(row, 2, entry.date.toString())
             createCell(row, 3, entry.operationType.toString())
-            createCell(row, 4, entry.transactionSource.toString())
-            createCell(row, 5, entry.note)
-            createCell(row, 6, entry.cardPan)
+            createCell(row, 4, entry.operationAmount.toString())
+            createCell(row, 5, entry.transactionSource.toString())
+            createCell(row, 6, entry.note)
+            createCell(row, 7, entry.cardPan)
             rowNum++
         }
     }

@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.ruslanakhmetov.myapplication.databinding.ActivityMainBinding
 import com.ruslanakhmetov.myapplication.repository.exceloperation.ConvertToExcel
+import com.ruslanakhmetov.myapplication.repository.exceloperation.shareFile
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var convertToExcel: ConvertToExcel
 
     companion object {
+        const val TAG = "MainActivity"
         val sellers = arrayListOf(
             Seller("METRO.SPB", TransactionSource.ТРАНСПОРТ),
             Seller("APTECHNOE", TransactionSource.ПРОДУКТЫ),
@@ -25,6 +27,9 @@ class MainActivity : AppCompatActivity() {
         val bankCards = arrayListOf(
             BankCard("Tinkoff", "*0345", 0.0)
         )
+
+        const val FILE_NAME = "report.xls"
+        const val REPORT_DIR = "reports"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +40,10 @@ class MainActivity : AppCompatActivity() {
         convertToExcel = ConvertToExcel(applicationContext)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.share.setOnClickListener {
+                shareFile(this, REPORT_DIR, FILE_NAME)
 
+        }
     }
 
     override fun onStart() {
@@ -50,13 +58,14 @@ class MainActivity : AppCompatActivity() {
                     for (sms in smslist) {
                         sms?.let {
                             if (sms.sender.equals(bankCards[0].bankName)) {
-                                smsDataMapper.convertSMSToBudgetEntry(it)?.let {entry->
+                                smsDataMapper.convertSMSToBudgetEntry(it)?.let { entry ->
                                     budgetEntries.add(entry)
                                     Log.i(TAG, "onStart ......`")
                                     Log.i(TAG, "smsId: ${entry?.smsId}  ")
                                     Log.i(TAG, "cardPan: ${entry?.cardPan}  ")
                                     Log.i(TAG, "trSource: ${entry?.transactionSource}  ")
                                     Log.i(TAG, "date: ${entry?.date.toString()}  ")
+                                    Log.i(TAG, "amount: ${entry?.operationAmount.toString()}  ")
                                     Log.i(TAG, "balance: ${bankCards[0].balance}")
                                 }
 
@@ -65,7 +74,12 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                     budgetEntries?.let {
-                        convertToExcel.convertBudgetEntryToExcel(dataList=budgetEntries)
+                        convertToExcel.convertBudgetEntryToExcel(
+                            dirName = REPORT_DIR,
+                            fileName = FILE_NAME,
+                            dataList = budgetEntries
+                        )
+
                     }
                 }
         }
