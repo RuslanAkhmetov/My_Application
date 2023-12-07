@@ -1,6 +1,7 @@
-package com.ruslanakhmetov.myapplication
+package com.ruslanakhmetov.myapplication.database.domain
 
-import java.util.*
+import java.util.Date
+
 
 data class BudgetEntry(
     var id: Long = 0L,
@@ -12,3 +13,4 @@ data class BudgetEntry(
     var note: String = "",
     var cardPan: String = ""
 )
+

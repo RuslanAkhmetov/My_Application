@@ -2,7 +2,7 @@ package com.ruslanakhmetov.myapplication.repository.exceloperation
 
 import android.content.Context
 import android.util.Log
-import com.ruslanakhmetov.myapplication.BudgetEntry
+import com.ruslanakhmetov.myapplication.database.domain.BudgetEntry
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
 import org.apache.poi.hssf.util.HSSFColor
 import org.apache.poi.ss.usermodel.*

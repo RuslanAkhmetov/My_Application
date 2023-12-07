@@ -1,4 +1,4 @@
-package com.ruslanakhmetov.myapplication
+package com.ruslanakhmetov.myapplication.database.domain
 
 data class BankCard(
     val bankName: String,

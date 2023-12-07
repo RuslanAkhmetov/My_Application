@@ -1,10 +1,10 @@
-package com.ruslanakhmetov.myapplication
+package com.ruslanakhmetov.myapplication.repository
 
 import android.content.Context
 import android.database.Cursor
 import android.provider.Telephony
 import android.util.Log
-
+import com.ruslanakhmetov.myapplication.database.domain.SMS
 
 
 class SMSData(private val applicationContext: Context) {
