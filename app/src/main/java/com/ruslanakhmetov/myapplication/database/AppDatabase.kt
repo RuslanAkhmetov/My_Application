@@ -3,6 +3,7 @@ package com.ruslanakhmetov.myapplication.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.ruslanakhmetov.myapplication.database.dao.BankCardEntityDao
 import com.ruslanakhmetov.myapplication.database.dao.BudgetEntryEntityDao
 import com.ruslanakhmetov.myapplication.database.dao.BudgetGroupEntityDao
 import com.ruslanakhmetov.myapplication.database.dao.SmsDataDao
@@ -21,6 +22,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract val smsDataDao: SmsDataDao
     abstract val budgetGroupEntityDao: BudgetGroupEntityDao
     abstract val budgetEntryEntityDao: BudgetEntryEntityDao
+    abstract val bankCardEntityDao: BankCardEntityDao
 }
 
 

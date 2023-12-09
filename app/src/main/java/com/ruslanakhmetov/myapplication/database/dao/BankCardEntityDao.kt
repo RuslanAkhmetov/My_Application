@@ -19,4 +19,7 @@ interface BankCardEntityDao {
 
     @Delete
     suspend fun delete(entity: BankCardEntity)
+
+    @Query("SELECT COUNT(id) FROM bank_card_entity")
+    fun getCount() : Int
 }
