@@ -1,6 +1,7 @@
-package com.ruslanakhmetov.myapplication
+package com.ruslanakhmetov.myapplication.repository
 
 import android.util.Log
+import com.ruslanakhmetov.myapplication.database.domain.*
 import java.util.*
 import java.util.regex.Pattern
 

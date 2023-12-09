@@ -1,14 +1,14 @@
-package com.ruslanakhmetov.myapplication
+package com.ruslanakhmetov.myapplication.repository
 
 import android.content.Context
 import android.database.Cursor
 import android.provider.Telephony
 import android.util.Log
-
+import com.ruslanakhmetov.myapplication.database.domain.SMS
 
 
 class SMSData(private val applicationContext: Context) {
-    private val TAG ="SMSDataMapper"
+    private val TAG ="SMSData"
 
     public fun readAllSMS(): List<SMS?>? {
         val cr =   applicationContext.contentResolver
