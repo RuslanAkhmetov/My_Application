@@ -2,25 +2,26 @@ package com.ruslanakhmetov.myapplication.repository
 
 import androidx.lifecycle.MutableLiveData
 import com.ruslanakhmetov.myapplication.database.AppDatabase
-import com.ruslanakhmetov.myapplication.database.BudgetEntryEntity
-import com.ruslanakhmetov.myapplication.database.domain.BudgetEntry
-import com.ruslanakhmetov.myapplication.database.domain.TransactionSource
+import com.ruslanakhmetov.myapplication.database.entity.BudgetEntryEntity
+import com.ruslanakhmetov.myapplication.domain.BudgetEntry
+import com.ruslanakhmetov.myapplication.domain.TransactionSource
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class BudgetEntryRepositoryImpl(
     private val db: AppDatabase
 ) : BudgetEntryRepository {
+
     private val TAG = "BudgetEntrySMSRepository"
     private val budgetEntityDAO = db.budgetEntryEntityDao
     private var budgetEntriesLiveData = MutableLiveData<AppState>()
 
-    init {
+   /* init {
         loadEntutiesFromDB()
 
-    }
+    }*/
 
-    fun loadEntutiesFromDB() {
+    fun loadEntitiesFromDB() {
         GlobalScope.launch {
             budgetEntriesLiveData.value = AppState.Loading
             try {
@@ -63,8 +64,21 @@ class BudgetEntryRepositoryImpl(
         }
     }
 
+    suspend fun getDBCount(): Int=
+        budgetEntityDAO.getCount()
 
-    override fun getBudgetEntries(): MutableLiveData<AppState> = budgetEntriesLiveData
+
+    override suspend fun getBudgetEntries(): AppState{
+        var appState:AppState = AppState.Loading
+        try {
+            budgetEntryEntityListToBudgetEntryList(budgetEntityDAO.getAll())?.let {
+                appState = AppState.Success(it)
+            }
+        } catch (e: Throwable){
+            appState = AppState.Error(e)
+        }
+        return appState
+    }
 
 
 }

@@ -1,7 +1,7 @@
 package com.ruslanakhmetov.myapplication.database.dao
 
 import androidx.room.*
-import com.ruslanakhmetov.myapplication.database.SmsDataEntity
+import com.ruslanakhmetov.myapplication.database.entity.SmsDataEntity
 
 @Dao
 interface SmsDataDao {

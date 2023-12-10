@@ -1,7 +1,7 @@
 package com.ruslanakhmetov.myapplication.database.dao
 
 import androidx.room.*
-import com.ruslanakhmetov.myapplication.database.BankCardEntity
+import com.ruslanakhmetov.myapplication.database.entity.BankCardEntity
 
 @Dao
 interface BankCardEntityDao {
@@ -21,5 +21,5 @@ interface BankCardEntityDao {
     suspend fun delete(entity: BankCardEntity)
 
     @Query("SELECT COUNT(id) FROM bank_card_entity")
-    fun getCount() : Int
+    suspend fun getCount() : Int
 }
