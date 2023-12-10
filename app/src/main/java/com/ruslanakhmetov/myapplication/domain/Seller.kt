@@ -1,7 +1,8 @@
-package com.ruslanakhmetov.myapplication.database.domain
+package com.ruslanakhmetov.myapplication.domain
 
 
 data class Seller(
+    val id: Long,
     val name: String,
     val transactionSource: TransactionSource
     )

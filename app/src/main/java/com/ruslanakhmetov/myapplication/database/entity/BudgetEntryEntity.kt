@@ -1,8 +1,8 @@
-package com.ruslanakhmetov.myapplication.database
+package com.ruslanakhmetov.myapplication.database.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.ruslanakhmetov.myapplication.database.domain.OperationType
+import com.ruslanakhmetov.myapplication.domain.OperationType
 import java.util.Date
 
 @Entity(tableName = "budget_entry_table")

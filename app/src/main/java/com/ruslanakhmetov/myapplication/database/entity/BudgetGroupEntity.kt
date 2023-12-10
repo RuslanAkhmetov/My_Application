@@ -1,4 +1,4 @@
-package com.ruslanakhmetov.myapplication.database
+package com.ruslanakhmetov.myapplication.database.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

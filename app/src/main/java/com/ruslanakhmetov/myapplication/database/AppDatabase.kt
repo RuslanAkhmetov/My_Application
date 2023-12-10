@@ -3,15 +3,13 @@ package com.ruslanakhmetov.myapplication.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.ruslanakhmetov.myapplication.database.dao.BankCardEntityDao
-import com.ruslanakhmetov.myapplication.database.dao.BudgetEntryEntityDao
-import com.ruslanakhmetov.myapplication.database.dao.BudgetGroupEntityDao
-import com.ruslanakhmetov.myapplication.database.dao.SmsDataDao
-import com.ruslanakhmetov.myapplication.database.domain.BankCard
+import com.ruslanakhmetov.myapplication.database.dao.*
+import com.ruslanakhmetov.myapplication.database.domain.SellerEntity
+import com.ruslanakhmetov.myapplication.database.entity.*
 
 
 @Database(
-    entities = [SmsDataEntity::class, BudgetGroupEntity::class, BudgetEntryEntity::class, BankCardEntity::class],
+    entities = [SmsDataEntity::class, BudgetGroupEntity::class, BudgetEntryEntity::class, BankCardEntity::class, BankEntity::class, SellerEntity::class],
     version = 1
 )
 @TypeConverters(OperationTypeConverter::class, DateConverter::class)
@@ -23,6 +21,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract val budgetGroupEntityDao: BudgetGroupEntityDao
     abstract val budgetEntryEntityDao: BudgetEntryEntityDao
     abstract val bankCardEntityDao: BankCardEntityDao
+    abstract val bankDao: BankDao
+
 }
 
 

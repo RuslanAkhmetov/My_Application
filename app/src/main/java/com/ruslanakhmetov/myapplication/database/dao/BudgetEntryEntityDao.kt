@@ -1,8 +1,8 @@
 package com.ruslanakhmetov.myapplication.database.dao
 
 import androidx.room.*
-import com.ruslanakhmetov.myapplication.database.BudgetEntryEntity
-import com.ruslanakhmetov.myapplication.database.domain.OperationType
+import com.ruslanakhmetov.myapplication.database.entity.BudgetEntryEntity
+import com.ruslanakhmetov.myapplication.domain.OperationType
 
 
 @Dao
@@ -25,4 +25,7 @@ interface BudgetEntryEntityDao {
 
     @Delete
     suspend fun delete(entity: BudgetEntryEntity)
+
+    @Query("SELECT COUNT(id) FROM budget_entry_table")
+    suspend fun getCount() : Int
 }

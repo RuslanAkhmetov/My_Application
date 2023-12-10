@@ -1,7 +1,7 @@
 package com.ruslanakhmetov.myapplication.database
 
 import androidx.room.TypeConverter
-import com.ruslanakhmetov.myapplication.database.domain.OperationType
+import com.ruslanakhmetov.myapplication.domain.OperationType
 
 
 
@@ -16,7 +16,7 @@ class OperationTypeConverter {
 
         when(intValue){
             1    -> OperationType.EXPENSE
-            2    ->OperationType.INCOME
+            2    -> OperationType.INCOME
             else -> OperationType.EXPENSE
         }
 

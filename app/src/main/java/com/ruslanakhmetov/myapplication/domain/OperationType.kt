@@ -1,4 +1,4 @@
-package com.ruslanakhmetov.myapplication.database.domain
+package com.ruslanakhmetov.myapplication.domain
 
 enum class OperationType(val id: Int) {
     EXPENSE(1),

@@ -1,6 +1,6 @@
 package com.ruslanakhmetov.myapplication.repository
 
-import com.ruslanakhmetov.myapplication.database.domain.BudgetEntry
+import com.ruslanakhmetov.myapplication.domain.BudgetEntry
 
 sealed class AppState(){
     data class Success (val budgetEntries :  List<BudgetEntry>): AppState()
